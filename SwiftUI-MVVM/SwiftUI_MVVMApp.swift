@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct SwiftUI_MVVMApp: App {
+    
+    let homeViewModel = HomeViewModel(webService: WebService())
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView(homeViewModel: homeViewModel)
         }
     }
 }
