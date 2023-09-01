@@ -48,6 +48,10 @@ extension HomeViewModel {
         }
     }
     
+    func push(to page: HomePage) {
+        self.page = page
+    }
+    
     // MARK: View Creation Methods
     @ViewBuilder
     private func userView() -> some View {

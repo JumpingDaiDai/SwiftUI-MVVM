@@ -11,12 +11,14 @@ class SettingViewModel: ObservableObject {
     
     // MARK: Navigation
     enum SettingPage: Hashable {
+        case photoList
         case favorite
     }
     
     @Published var page: SettingPage? = nil
     
-//    @Published var favorite: String = ""
+    @Published var photo: String = ""
+    @Published var favorite: String = ""
 }
 
 // MARK: Navigation
@@ -26,16 +28,27 @@ extension SettingViewModel {
     func build(page: SettingPage) -> some View {
         
         switch page {
+        case .photoList:
+            photoListView()
         case .favorite:
             favoriteView()
         }
     }
     
+    func push(to page: SettingPage) {
+        self.page = page
+    }
+    
     // MARK: View Creation Methods
+    @ViewBuilder
+    private func photoListView() -> some View {
+        let photoListViewModel = PhotoListViewModel()
+        PhotoListView(photoListViewModel: photoListViewModel, settingViewModel: self)
+    }
+    
     @ViewBuilder
     private func favoriteView() -> some View {
         let favoriteViewModel = FavoriteViewModel()
-//        FavoriteView(favoriteViewModel: favoriteViewModel, favorite: $favorite)
-        FavoriteView(favoriteViewModel: favoriteViewModel)
+        FavoriteView(favoriteViewModel: favoriteViewModel, settingViewModel: self)
     }
 }

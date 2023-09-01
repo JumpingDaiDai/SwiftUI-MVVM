@@ -9,13 +9,15 @@ import SwiftUI
 
 struct SettingView: View {
     
-    @ObservedObject var settingViewModel: SettingViewModel
+    @EnvironmentObject var settingViewModel: SettingViewModel
     
     var body: some View {
         ZStack {
-            VStack {
+            VStack(spacing: 50) {
+                PhotoView()
+                
                 Button {
-                    settingViewModel.page = .favorite
+                    settingViewModel.push(to: .favorite)
                 } label: {
                     Text((settingViewModel.favorite != "") ? settingViewModel.favorite : "Choose Favorite")
                 }
@@ -24,19 +26,33 @@ struct SettingView: View {
                 .background(Color.red)
                 .cornerRadius(10)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-            NavigationLink(tag: SettingViewModel.SettingPage.favorite, selection: $settingViewModel.page) {
-                settingViewModel.build(page: .favorite)
-            } label: {
-                EmptyView()
-            }
+            bindingNavigation(to: .photoList, selection: $settingViewModel.page, viewModel: settingViewModel)
+            bindingNavigation(to: .favorite, selection: $settingViewModel.page, viewModel: settingViewModel)
         }
         .navigationBarTitle("Setting", displayMode: .inline)
     }
 }
 
+extension SettingView {
+    
+    @ViewBuilder
+    private func bindingNavigation(to page: SettingViewModel.SettingPage,
+                                   selection:Binding<SettingViewModel.SettingPage?>,
+                                   viewModel: SettingViewModel) -> some View {
+        
+        NavigationLink(tag: page, selection: selection) {
+            viewModel.build(page: page)
+        } label: {
+            EmptyView()
+        }
+    }
+}
+
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView(settingViewModel: SettingViewModel())
+        SettingView()
+            .environmentObject(SettingViewModel())
     }
 }

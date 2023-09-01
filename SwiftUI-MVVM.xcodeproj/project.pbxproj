@@ -21,6 +21,9 @@
 		B29DC8BD2AA0F31B006C3A73 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29DC8AE2AA0F31B006C3A73 /* HomeModel.swift */; };
 		B29DC8BE2AA0F31B006C3A73 /* WebService+Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29DC8B12AA0F31B006C3A73 /* WebService+Home.swift */; };
 		B29DC8BF2AA0F31B006C3A73 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29DC8B22AA0F31B006C3A73 /* WebService.swift */; };
+		BDD2D1A12AA1C18500B4799E /* PhotoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD2D1A02AA1C18500B4799E /* PhotoListView.swift */; };
+		BDD2D1A32AA1C18F00B4799E /* PhotoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD2D1A22AA1C18F00B4799E /* PhotoListViewModel.swift */; };
+		BDD2D1A52AA1C78F00B4799E /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD2D1A42AA1C78F00B4799E /* PhotoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +42,9 @@
 		B29DC8AE2AA0F31B006C3A73 /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		B29DC8B12AA0F31B006C3A73 /* WebService+Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WebService+Home.swift"; sourceTree = "<group>"; };
 		B29DC8B22AA0F31B006C3A73 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		BDD2D1A02AA1C18500B4799E /* PhotoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListView.swift; sourceTree = "<group>"; };
+		BDD2D1A22AA1C18F00B4799E /* PhotoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewModel.swift; sourceTree = "<group>"; };
+		BDD2D1A42AA1C78F00B4799E /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,10 +77,10 @@
 		B29DC88F2AA0F242006C3A73 /* SwiftUI-MVVM */ = {
 			isa = PBXGroup;
 			children = (
-				B29DC8902AA0F242006C3A73 /* SwiftUI_MVVMApp.swift */,
 				B29DC8AD2AA0F31B006C3A73 /* Model */,
 				B29DC8AF2AA0F31B006C3A73 /* Service */,
 				B29DC89E2AA0F31B006C3A73 /* Feature */,
+				B29DC8902AA0F242006C3A73 /* SwiftUI_MVVMApp.swift */,
 				B29DC8942AA0F244006C3A73 /* Assets.xcassets */,
 				B29DC8962AA0F244006C3A73 /* Preview Content */,
 			);
@@ -120,9 +126,11 @@
 		B29DC8A62AA0F31B006C3A73 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				BDD2D19F2AA1C16C00B4799E /* PhotoList */,
 				B29DC8A72AA0F31B006C3A73 /* Favority */,
 				B29DC8AA2AA0F31B006C3A73 /* SettingViewModel.swift */,
 				B29DC8AB2AA0F31B006C3A73 /* SettingView.swift */,
+				BDD2D1A42AA1C78F00B4799E /* PhotoView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -159,6 +167,15 @@
 				B29DC8B22AA0F31B006C3A73 /* WebService.swift */,
 			);
 			path = WebService;
+			sourceTree = "<group>";
+		};
+		BDD2D19F2AA1C16C00B4799E /* PhotoList */ = {
+			isa = PBXGroup;
+			children = (
+				BDD2D1A22AA1C18F00B4799E /* PhotoListViewModel.swift */,
+				BDD2D1A02AA1C18500B4799E /* PhotoListView.swift */,
+			);
+			path = PhotoList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,8 +248,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDD2D1A12AA1C18500B4799E /* PhotoListView.swift in Sources */,
 				B29DC8B92AA0F31B006C3A73 /* FavoriteViewModel.swift in Sources */,
 				B29DC8B82AA0F31B006C3A73 /* FavoriteView.swift in Sources */,
+				BDD2D1A52AA1C78F00B4799E /* PhotoView.swift in Sources */,
 				B29DC8BF2AA0F31B006C3A73 /* WebService.swift in Sources */,
 				B29DC8B62AA0F31B006C3A73 /* UserViewModel.swift in Sources */,
 				B29DC8B42AA0F31B006C3A73 /* HomeView.swift in Sources */,
@@ -243,6 +262,7 @@
 				B29DC8BE2AA0F31B006C3A73 /* WebService+Home.swift in Sources */,
 				B29DC8B72AA0F31B006C3A73 /* UserView.swift in Sources */,
 				B29DC8BB2AA0F31B006C3A73 /* SettingView.swift in Sources */,
+				BDD2D1A32AA1C18F00B4799E /* PhotoListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

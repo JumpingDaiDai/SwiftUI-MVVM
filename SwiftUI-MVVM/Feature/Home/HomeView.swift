@@ -22,7 +22,7 @@ struct HomeView: View {
                     VStack (spacing: 20) {
                         Text("Go to User Page")
                             .onTapGesture {
-                                self.homeViewModel.page = .user
+                                homeViewModel.push(to: .user)
                             }
                     }
                     
@@ -33,13 +33,24 @@ struct HomeView: View {
                     }
                 }
                 
-                NavigationLink(tag: HomeViewModel.HomePage.user, selection: $homeViewModel.page) {
-                    homeViewModel.build(page: .user)
-                } label: {
-                    EmptyView()
-                }
+                bindingNavigation(to: .user, selection: $homeViewModel.page, viewModel: homeViewModel)
             }
             .navigationBarTitle("Home", displayMode: .inline)
+        }
+    }
+}
+
+extension HomeView {
+    
+    @ViewBuilder
+    private func bindingNavigation(to page: HomeViewModel.HomePage,
+                                   selection:Binding<HomeViewModel.HomePage?>,
+                                   viewModel: HomeViewModel) -> some View {
+        
+        NavigationLink(tag: page, selection: selection) {
+            viewModel.build(page: page)
+        } label: {
+            EmptyView()
         }
     }
 }

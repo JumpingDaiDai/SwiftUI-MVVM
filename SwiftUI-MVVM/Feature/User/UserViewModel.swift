@@ -10,13 +10,15 @@ import SwiftUI
 class UserViewModel: ObservableObject {
     
     // MARK: Navigation
-    enum UserPage: Hashable {
+    enum UserPage: Hashable, CaseIterable, Identifiable {
         case setting
+        
+        var id: Self { self }
     }
-    
+
     @Published var page: UserPage? = nil
     
-    @ObservedObject var settingViewModel = SettingViewModel()
+    let settingViewModel = SettingViewModel()
 }
 
 
@@ -32,9 +34,14 @@ extension UserViewModel {
         }
     }
     
+    func push(to page: UserPage) {
+        self.page = page
+    }
+    
     // MARK: View Creation Methods
     @ViewBuilder
     private func settingView() -> some View {
-        SettingView(settingViewModel: settingViewModel)
+        SettingView()
+            .environmentObject(settingViewModel)
     }
 }

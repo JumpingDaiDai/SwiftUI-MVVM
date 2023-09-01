@@ -11,16 +11,14 @@ struct FavoriteView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var favoriteViewModel: FavoriteViewModel
-//    @ObservedObject var settingViewModel: SettingViewModel
-//    @Binding var favorite: String
+    @ObservedObject var settingViewModel: SettingViewModel
     
     var body: some View {
         ZStack {
             List {
                 ForEach(favoriteViewModel.favoriteList, id: \.self) { text in
                     Button {
-                        print("\(text) clicked")
-//                        favorite = text
+                        settingViewModel.favorite = text
                         presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text(text)
@@ -35,7 +33,6 @@ struct FavoriteView: View {
 
 struct FavoriteView_Previews: PreviewProvider {
     static var previews: some View {
-//        FavoriteView(favoriteViewModel: FavoriteViewModel(), favorite: .constant(""))
-        FavoriteView(favoriteViewModel: FavoriteViewModel())
+        FavoriteView(favoriteViewModel: FavoriteViewModel(), settingViewModel: SettingViewModel())
     }
 }
